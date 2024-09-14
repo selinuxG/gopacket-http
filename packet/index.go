@@ -36,18 +36,21 @@ func NewPacketHandle(ctx context.Context, cardName string, eventCh chan interfac
 }
 
 // SetBpf 设置过滤器规则.
+// 设置后仅处理过滤后的数据包.
 func (slf *Handle) SetBpf(bpf string) *Handle {
 	slf.bpf = bpf
 	return slf
 }
 
 // SetPromisc 设置混杂模式.
+// 开启后接收和处理所有经过的网络流量,而不仅仅是发送到该接口的流量.
 func (slf *Handle) SetPromisc(promise bool) *Handle {
 	slf.promisc = promise
 	return slf
 }
 
 // SetEventHandle 设置多协程事件处理.
+// 设置后启动自定义数量goroutine去处理逻辑.
 func (slf *Handle) SetEventHandle(goroutineNum int, handle EventFunc) *Handle {
 	slf.goroutineNum = goroutineNum
 	slf.eventHandle = handle
