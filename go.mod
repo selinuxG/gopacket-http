@@ -1,4 +1,4 @@
-module github.com/shixiaofeia/gopacket-http
+module github.com/selinuxG/gopacket-http
 
 go 1.19
 
